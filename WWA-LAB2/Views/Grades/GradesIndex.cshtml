@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "GradesIndex";
+}
+
+<h2>Grades</h2>
+@using (Html.BeginForm("GradesIndex", "Grades", FormMethod.Post))
+{
+    @Html.Label("Grade ") 
+    @Html.TextBox("grade1", null, new { @class = "textbox", type = "number"});
+    <br />
+    <Br />
+    @Html.Label("Grade2")
+    @Html.TextBox("grade2", null, new { @class = "textbox", type = "number" });
+    <br />
+    <BR />
+    @Html.Label("Grade3")
+    @Html.TextBox("grade3", null, new { @class = "textbox", type = "number" });
+    <br />
+    <br />
+    <input type="submit" value="Calculate Average" />
+}
+
+@if(ViewData["Error"] !=null)
+{
+    <h3 style="color:red">@ViewData["Error"]</h3>
+}
+
+@if (ViewData["finalGrade"] != null && ViewData["average"] != null)
+{
+
+    if (ViewData["finalGrade"] == "F" || ViewData["finalGrade"] == "D")
+    {
+        <h2>Your grade is <b style="color:red"> @ViewData["finalGrade"] : @ViewData["average"] % </b> </h2>
+    }
+    if (ViewData["finalGrade"] == "C")
+    {
+        <h2>Your grade is <b style="color:yellow"> @ViewData["finalGrade"] : @ViewData["average"] % </b> </h2>
+    }
+    if (ViewData["finalGrade"] == "B" || ViewData["finalGrade"] == "A")
+    {
+        <h2>Your grade is <b style="color:green"> @ViewData["finalGrade"] : @ViewData["average"] % </b> </h2>
+    }
+
+
+}
+
+
+

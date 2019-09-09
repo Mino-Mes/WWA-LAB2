@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "LoanIndex";
+}
+
+<h2>Step 2</h2>
+
+<form action="/Loan/LoanIndex" method="post">
+    <label>Initial Investment</label>
+    <input type="text" name="amount">
+    <br />
+    <label>Time</label>
+    <input type="text" name="years" />
+    <br />
+    <label>Interest</label>
+    <input type="text" name="interest" />
+    <br />
+    <input type="submit" value="Calculate" />
+</form>
+
+@if (ViewData["finalAmount"] != null || ViewData["years"] != null || ViewData["interest"] != null || ViewData["amount"] != null)
+{
+    <h2>In @ViewData["years"] years ,with an investment of @ViewData["amount"] and an interest rate of @ViewData["interest"] %, the final amount would be @ViewData["finalAmount"]</h2>
+}
+
